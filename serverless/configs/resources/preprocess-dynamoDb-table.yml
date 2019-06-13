@@ -1,5 +1,5 @@
   Resources:
-    TransformDynamoDbTable:
+    PreprocessDynamoDbTable:
       Type: 'AWS::DynamoDB::Table'
       # Check what should be the policy, Retain or Delete
       DeletionPolicy: Retain

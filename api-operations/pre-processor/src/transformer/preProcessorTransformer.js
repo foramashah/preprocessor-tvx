@@ -1,15 +1,14 @@
 'use strict';
 
 let ResponseDto = require('../model/ResponseDto');
-let RequestBo = require('../model/RequestBo');
+let RequestBo = require('../model/preProcessorBo');
 let ResponseBo = require('../model/ResponseBo');
+let preProcessorValidator = require('./preProcessorValidator');
 
-let generictransformerValidator = require('./genericTransformerValidator');
-
-class RequestResponseTransformer {
+class PreProcessorTransformer {
 
     static async transformToBo(requestDto) {
-        return new RequestBo(requestDto.data, requestDto.transformationRules, requestDto.jobDetails, requestDto.traceFields);
+        return new RequestBo(requestDto.data, requestDto.preprocessorRules, requestDto.jobDetails, requestDto.traceFields);
     }
 
     static async transformToDto(responseBo) {
@@ -17,4 +16,4 @@ class RequestResponseTransformer {
     }
 }
 
-module.exports = RequestResponseTransformer;
+module.exports = PreProcessorTransformer;

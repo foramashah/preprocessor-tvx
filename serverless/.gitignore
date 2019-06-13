@@ -1,7 +1,4 @@
 .vscode
-.eslintrc.json
-serverless/node_modules
-api-test/node_modules
 package-lock.json
 node_modules
 .serverless

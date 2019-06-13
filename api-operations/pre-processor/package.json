@@ -1,15 +1,14 @@
 {
-    "name": "business-transformer",
+    "name": "pre-processor",
     "version": "1.0.0",
-    "description": "Generic Business transformer sevice",
+    "description": "PreProcessor sevice",
     "main": "index.js",
     "scripts": {
         "test": "nyc mocha ./unit-test/*.js --reporter mochawesome --reporter-options reportDir=./unit-test-results,reportFilename=unit-test-report.html,code=false,autoOpen=false"
     },
     "dependencies": {
         "aws-sdk": "^2.469.0",
-        "generic-exception": "git+https://github.com/MukeshTravelex/generic-exception.git",
-        "object-mapper": "^5.0.0"
+        "generic-exception": "git+https://github.com/MukeshTravelex/generic-exception.git"
     },
     "license": "ISC",
     "devDependencies": {
@@ -18,5 +17,5 @@
         "mocha": "^6.1.4",
         "mochawesome": "^3.1.1"
     },
-    "author": "Foram"
+    "author": "Prashant"
 }

@@ -1,0 +1,12 @@
+{"jobDetail": {
+    "domain": "Finance",
+    "interfaceName": "xpressmoney",
+    "jobName": "xpressmoneyuk", 
+    "fileName": "XM_ST_20170831_TRVLXUK.TXT",
+    "sizeInKb": 32,
+    "bucketName": "tvx-middleware-dev",
+    "region": "eu-west-1"
+    }
+}
+
+    

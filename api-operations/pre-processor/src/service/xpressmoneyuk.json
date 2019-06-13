@@ -1,0 +1,55 @@
+{
+  "interfaceConfig":	{
+    "name": "xpressmoneyuk", 
+        "domain": "finance",
+        "source": {
+            "resource": "s3",
+            "type": "file",
+            "file": {
+                "format": "delimited",
+                "delimited": {
+                    "headerExist": true,
+                    "trailerExist": true,
+                    "fieldDelimiter": ",",
+                    "fieldQuoteEscape": "\\",
+                    "recordDelimiter": "\r\n",
+                    "schemaFileName": "xpressmoneyuk.json"
+                }
+            },
+            "trigger": {
+                "cronExpression": "***1*5"
+            }
+        },
+        "s3": {
+            "inputObjectKey": "interfaces/input/Finance/xpressmoney/",
+            "archiveObjectKey": "interfaces/archive/Finance/xpressmoney/",
+            "errorObjectKey": "interfaces/error/finance/xpressmoney/xpressmoneyuk/",
+            "blockSize": 4
+        },
+        "preProcessors": {
+            "required": true,
+            "rules": ["preprocessor-rule.js","preprocessor-rule.js"]
+        },
+
+        "processors": {
+            "transformers": {
+                "required": true,
+                "type": "simple",
+                "simple": [
+                    "jo_CODA_0000_controlJobFXRATESFile-transformer1.js",
+                    "jo_CODA_0000_controlJobFXRATESFile-transformer2.js"
+                ]
+            }
+        },
+   "destination":{
+      "type":"api",
+      "api":{
+        "url":"https://middleware.travelex.net/coda-adapter/transaction",
+        "method":"post",
+        "contentType":"application/json",
+        "contentLength":1000,
+        "characterEncoding":"utf-8"
+      }
+    }
+ }
+}

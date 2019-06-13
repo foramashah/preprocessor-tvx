@@ -1,6 +1,6 @@
-const apiProcessor = require('business-transformer').apiProcessor;
+const apiProcessor = require('pre-processor').apiProcessor;
 //const winston_wrapper = require('winston_wrapper');
-//const logger = winston_wrapper.getLogger('transform-generictransformer-handler')
+//const logger = winston_wrapper.getLogger('preprocess-preprocessor-handler')
 module.exports.handle = function (event, context, callback) {
     //winston_wrapper.serverlessFunction(event, context, () => {
     console.log("Entered handler with request " + JSON.stringify(event));

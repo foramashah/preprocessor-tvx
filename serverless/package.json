@@ -1,12 +1,12 @@
 {
-  "name": "generic-transformer-service",
+  "name": "pre-processor-service",
   "version": "1.0.0",
-  "description": "Serverless generic transformer api",
+  "description": "Serverless preprocessor api",
   "main": "index.js",
   "dependencies": {
     "api-test": "file:../api-test",
-    "winston_wrapper": "git+https://github.com/siddhirajpantoji/testLogger.git",
-    "business-transformer": "file:../api-operations/business-transformer"
+    "pre-processor": "file:../api-operations/pre-processor",
+    "winston_wrapper": "git+https://github.com/siddhirajpantoji/testLogger.git"
   },
   "directories": {
     "lib": "./configs"
@@ -26,6 +26,6 @@
     "test": "npm run unit-test & npm run code-coverage & npm run component-test"
   },
   "contributors": [],
-  "author": "Foram",
+  "author": "Prashant",
   "license": "[license]"
 }

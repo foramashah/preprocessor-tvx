@@ -1,11 +1,11 @@
 'use strict'
 
-let _data, _transformationRules, _jobDetails, _traceFields;
+let _data, _preprocessorRules, _jobDetails, _traceFields;
 
 class RequestDto {
-    constructor(data, transformationRules, jobDetails, traceFields) {
+    constructor(data, preprocessorRules, jobDetails, traceFields) {
         _data = data;
-        _transformationRules = transformationRules;
+        _preprocessorRules = preprocessorRules;
         _jobDetails = jobDetails;
         _traceFields = traceFields;
     }
@@ -14,8 +14,8 @@ class RequestDto {
         return _data;
     }
 
-    get transformationRules() {
-        return _transformationRules;
+    get preprocessorRules() {
+        return _preprocessorRules;
     }
 
     get jobDetails() {
@@ -29,7 +29,7 @@ class RequestDto {
     toString() {
         return JSON.stringify({
             data: this.data,
-            transformationRules: this.transformationRules,
+            preprocessorRules: this.preprocessorRules,
             jobDetails: this.jobDetails,
             traceFields: this.data.traceFields
         })

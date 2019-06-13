@@ -1,4 +1,4 @@
-service: business-transformer-api
+service: pre-processor-api
 # package:
 #   individually: true
 #   exclude:
@@ -26,7 +26,7 @@ provider:
   stage: ${self:custom.stageNames.dev}
   region: eu-west-1
   stackName: sls-${self:service}-${opt:stage, self:provider.stage}-stack
-  apiName: genericTransformer-api
+  apiName: preProcessor-api
   role: arn:aws:iam::820643439592:role/myDefaultRoleDataProcessor
 #  deploymentBucket:
 #    name: sls-${self:service}-${opt:stage, self:provider.stage}
@@ -41,7 +41,7 @@ provider:
 
 functions:
   
-  - ${file(./configs/functions/business-transformer.yml)}
+  - ${file(./configs/functions/preprocess.yml)}
 
 # you can add CloudFormation resource templates here
 resources:

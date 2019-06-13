@@ -1,0 +1,13 @@
+  preprocess:
+    name: pre-processor-${opt:stage, self:provider.stage}
+    handler: src/handlers/${self:provider.name}/pre-processor-handler.handle
+    timeout: 300
+    package:
+      include:
+        - src/handlers/${self:provider.name}/pre-processor-handler.js
+        - node_modules/pre-processor/**
+    events:
+      - http:
+          path: preprocess
+          method: post
+          cors: true

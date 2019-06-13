@@ -1,11 +1,11 @@
 'user strict';
 
-let _data, _businessRules, _transformationRules, _jobDetails, _traceFields;
+let _data, _businessRules, _preprocessorRules, _jobDetails, _traceFields;
 
 class RequestBo {
-    constructor(data, transformationRules, jobDetails, traceFields) {
+    constructor(data, preprocessorRules, jobDetails, traceFields) {
         _data = data;
-        _transformationRules = transformationRules;
+        _preprocessorRules = preprocessorRules;
         _jobDetails = jobDetails;
         _traceFields = traceFields;
     }
@@ -14,21 +14,21 @@ class RequestBo {
         return _data;
     }
 
-    get transformationRules() {
-        let transformationRules = [];
-        if (_transformationRules && _transformationRules.length > 0) {
-            // _transformationRules.map(rule => {
+    get preprocessorRules() {
+        let preprocessorRules = [];
+        if (_preprocessorRules && _preprocessorRules.length > 0) {
+            // _preprocessorRules.map(rule => {
             //     return `interfaces/transformers/${this.jobDetails.domain}/${rule}`;
             // })
-            for (let i = 0; i < _transformationRules.length; i++) {
-                let fileName = `interfaces/transformers/${this.jobDetails.domain}/${this.jobDetails.interfaceName}/${this.jobDetails.jobName}/${_transformationRules[i]}`;
-                //let fileName = `interfaces/transformers/${this.jobDetails.domain}/${_transformationRules[i]}`;
-                transformationRules.push({ file: _transformationRules[i], key: fileName })
+            for (let i = 0; i < _preprocessorRules.length; i++) {
+                let fileName = `interfaces/transformers/${this.jobDetails.domain}/${this.jobDetails.interfaceName}/${this.jobDetails.jobName}/${_preprocessorRules[i]}`;
+                //let fileName = `interfaces/transformers/${this.jobDetails.domain}/${_preprocessorRules[i]}`;
+                preprocessorRules.push({ file: _preprocessorRules[i], key: fileName })
             };
         } else {
             console.log('No transformations rules defined')
         }
-        return transformationRules;
+        return preprocessorRules;
     }
 
     get jobDetails() {
@@ -41,7 +41,7 @@ class RequestBo {
     toString() {
         return JSON.stringify({
             data: this.data,
-            transformationRules: this.transformationRules,
+            preprocessorRules: this.preprocessorRules,
             jobDetails: this.jobDetails,
             traceFields: this.traceFields
         })

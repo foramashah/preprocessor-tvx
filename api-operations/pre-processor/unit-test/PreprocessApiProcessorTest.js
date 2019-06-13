@@ -1,25 +1,8 @@
-var ApiProcessor = require('../src/api/TransformApiProcessor');
+var ApiProcessor = require('../src/api/PreprocessApiProcessor');
 const assert = require('chai').assert;
 
-let outputdata = { txCurrency02: 'AED',
-txXRate01: 6.0994,
-ifName: 'FX_RATES',
-txCurrency01: 'gbp',
-txDate01: '290814',
-txComment03: 'codagbp290814.csv' };
-
-let inputData = {
-    "keyName": "interfaces/transformers/Finance/FXRates_transformer.js",
-    "objectLocation": "tvx-middleware-dev",
-    "data": {
-        "Currency": "AED",
-        "Rate": 6.0994,
-        "filename": "codagbp.csv",
-        "interfaceName": "FX_RATES"
-    }
-};
-
-describe('transform ApiProcessor - Unit test', () => {
+describe('preprocess ApiProcessor - Unit test', () => {
+  /*
     it('should return transformed json when valid input json is passed', () => {
         ApiProcessor.process(inputData, '').then((result) => {
             assert.deepEqual(result, outputdata);
@@ -74,5 +57,5 @@ describe('transform ApiProcessor - Unit test', () => {
             console.log("error : ", error);
         })
     });
-
+*/
 });
