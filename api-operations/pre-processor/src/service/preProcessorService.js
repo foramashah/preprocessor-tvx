@@ -19,31 +19,27 @@ class PreProcessorService {
         
         try {
             let preprocessorrules = requestBo.interfaceConfig.preProcessors.rules;
-            console.log("11111preProcessorRules : ", preprocessorrules);
+            
             if (preprocessorrules.length > 0){
                 for (let i = 0; i < preprocessorrules.length; i++){
                     let preprocessorrulename = `interfaces/preprocessors/${requestBo.jobDetails.domain}/${requestBo.jobDetails.interfaceName}/${requestBo.jobDetails.jobName}/${preprocessorrules[i]}`;
                     let readStream = await this.readStream(requestBo.jobDetails.bucketName, preprocessorrulename);
-                    console.log('22222222222', readStream)
                     let preprocessor1 = await this.evalStream(readStream.toString());
-                    console.log('3333333333', preprocessor1)
                     let ruleresponse = await preprocessor1.apply(requestBo);
-                    console.log('444444444', ruleresponse)
                     let jsonresponse = JSON.parse(ruleresponse)
-                    console.log('555555555', jsonresponse)
-                 
+                    
                     if (!jsonresponse.status){
                         let destLoc = requestBo.jobDetails.bucketName+'/'+requestBo.interfaceConfig.s3.errorObjectKey ;
                         let sourceLoc = requestBo.jobDetails.bucketName+'/'+requestBo.interfaceConfig.s3.inputObjectKey + requestBo.jobDetails.fileName ;
                         let fileKey =  requestBo.jobDetails.fileName;
                         let copyResponse = await this.copyFile(destLoc, sourceLoc, fileKey);
-                        console.log('666666666', copyResponse)
+                        
                         if (copyResponse.status){
                             let delLoc = requestBo.jobDetails.bucketName; 
                             let delFile = requestBo.interfaceConfig.s3.inputObjectKey + fileKey;
-                            console.log(delLoc, "delete");
+                            
                             let deleteResponse = await this.deleteFile(delLoc, delFile)
-                            console.log('777777777777', deleteResponse)
+                            
                             if (deleteResponse.status == true){
                                 console.log("File deleted from Original location")
                             }
